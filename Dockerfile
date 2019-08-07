@@ -1,22 +1,24 @@
-FROM openjdk:8u212-jre-alpine
+FROM shipilev/openjdk-shenandoah:8
 
 LABEL maintainer "itzg"
 
-RUN apk add --no-cache -U \
-  openssl \
-  imagemagick \
-  lsof \
-  su-exec \
-  shadow \
-  bash \
-  curl iputils wget \
-  git \
-  jq \
-  mysql-client \
-  tzdata \
-  rsync \
-  nano \
-  python python-dev py2-pip
+# RUN apk add --no-cache -U \
+#   openssl \
+#   imagemagick \
+#   lsof \
+#   su-exec \
+#   shadow \
+#   bash \
+#   curl iputils wget \
+#   git \
+#   jq \
+#   mysql-client \
+#   tzdata \
+#   rsync \
+#   nano \
+#   python python-dev py2-pip
+
+RUN apt update && apt install -y openssl imagemagick lsof bash curl wget git jq mysql-client tzdata rsync nano python python-dev python-pip iputils-ping
 
 RUN pip install mcstatus yq
 
@@ -31,7 +33,7 @@ EXPOSE 25565 25575
 
 RUN echo 'hosts: files dns' > /etc/nsswitch.conf
 
-ARG RESTIFY_VER=1.1.6
+ RESTIFY_VER=1.1.6
 ARG RCON_CLI_VER=1.4.6
 ARG MC_SERVER_RUNNER_VER=1.3.2
 ARG TOF_BUILDTOOLS_VER=1.2.0
