@@ -2,21 +2,23 @@ FROM openjdk:8u212-jre-alpine
 
 LABEL maintainer "itzg"
 
-RUN apk add --no-cache -U \
-  openssl \
-  imagemagick \
-  lsof \
-  su-exec \
-  shadow \
-  bash \
-  curl iputils wget \
-  git \
-  jq \
-  mysql-client \
-  tzdata \
-  rsync \
-  nano \
-  python python-dev py2-pip
+# RUN apk add --no-cache -U \
+#   openssl \
+#   imagemagick \
+#   lsof \
+#   su-exec \
+#   shadow \
+#   bash \
+#   curl iputils wget \
+#   git \
+#   jq \
+#   mysql-client \
+#   tzdata \
+#   rsync \
+#   nano \
+#   python python-dev py2-pip
+
+RUN apt update && apt install -y openssl imagemagick lsof bash curl iputils-ping wget git jq mysql-client tzdata rsync nano python python-dev python-pip
 
 RUN pip install mcstatus yq
 
