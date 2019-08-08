@@ -80,7 +80,6 @@ COPY server.properties /tmp/server.properties
 WORKDIR /data
 
 ENTRYPOINT [ "/start" ]
-USER minecraft:minecraft
 ENV UID=1000 GID=1000 \
   JVM_XX_OPTS="-XX:+UseG1GC" MEMORY="1G" \
   TYPE=VANILLA VERSION=LATEST FORGEVERSION=RECOMMENDED SPONGEBRANCH=STABLE SPONGEVERSION= FABRICVERSION=LATEST LEVEL=world \
@@ -90,3 +89,4 @@ ENV UID=1000 GID=1000 \
 
 COPY start* /
 RUN dos2unix /start* && chmod +x /start*
+# USER minecraft:minecraft
