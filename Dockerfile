@@ -18,7 +18,7 @@ LABEL maintainer "itzg"
 #   nano \
 #   python python-dev py2-pip
 
-RUN apt update && apt install -y openssl imagemagick lsof bash curl iputils-ping wget git jq mysql-client tzdata rsync nano python python-dev python-pip
+RUN apt update && apt install -y openssl imagemagick lsof bash curl iputils-ping wget git jq mysql-client tzdata rsync nano python python-dev python-pip dos2unix
 
 RUN pip install mcstatus yq
 
